@@ -1,0 +1,299 @@
+[
+  {
+    "id": 1,
+    "nombre": "Cereal Trijuelas",
+    "categoria": "Cereales",
+    "calorias_por_100g": 380,
+    "macros_por_100g": {
+      "proteinas": 6.0,
+      "carbohidratos": 85.0,
+      "grasas": 1.5
+    }
+  },
+  {
+    "id": 2,
+    "nombre": "Corn Flakes",
+    "categoria": "Cereales",
+    "calorias_por_100g": 360,
+    "macros_por_100g": {
+      "proteinas": 7.0,
+      "carbohidratos": 84.0,
+      "grasas": 0.4
+    }
+  },
+  {
+    "id": 3,
+    "nombre": "Pan blanco artesanal Bimbo",
+    "categoria": "Cereales y Panadería",
+    "calorias_por_100g": 260,
+    "macros_por_100g": {
+      "proteinas": 8.5,
+      "carbohidratos": 49.0,
+      "grasas": 3.0
+    }
+  },
+  {
+    "id": 4,
+    "nombre": "Arroz blanco cocido",
+    "categoria": "Cereales",
+    "calorias_por_100g": 130,
+    "macros_por_100g": {
+      "proteinas": 2.7,
+      "carbohidratos": 28.0,
+      "grasas": 0.3
+    }
+  },
+  {
+    "id": 5,
+    "nombre": "Frijoles cocidos",
+    "categoria": "Leguminosas",
+    "calorias_por_100g": 132,
+    "macros_por_100g": {
+      "proteinas": 8.9,
+      "carbohidratos": 23.0,
+      "grasas": 0.5
+    }
+  },
+  {
+    "id": 6,
+    "nombre": "Garbanzos cocidos",
+    "categoria": "Leguminosas",
+    "calorias_por_100g": 164,
+    "macros_por_100g": {
+      "proteinas": 8.9,
+      "carbohidratos": 27.0,
+      "grasas": 2.6
+    }
+  },
+  {
+    "id": 7,
+    "nombre": "Lentejas cocidas",
+    "categoria": "Leguminosas",
+    "calorias_por_100g": 116,
+    "macros_por_100g": {
+      "proteinas": 9.0,
+      "carbohidratos": 20.0,
+      "grasas": 0.4
+    }
+  },
+  {
+    "id": 8,
+    "nombre": "Pechuga de pollo sin piel (cocida)",
+    "categoria": "Carnes",
+    "calorias_por_100g": 165,
+    "macros_por_100g": {
+      "proteinas": 31.0,
+      "carbohidratos": 0.0,
+      "grasas": 3.6
+    }
+  },
+  {
+    "id": 9,
+    "nombre": "Bistec de res magro",
+    "categoria": "Carnes",
+    "calorias_por_100g": 170,
+    "macros_por_100g": {
+      "proteinas": 26.0,
+      "carbohidratos": 0.0,
+      "grasas": 7.0
+    }
+  },
+  {
+    "id": 10,
+    "nombre": "Carne molida de res 90/10",
+    "categoria": "Carnes",
+    "calorias_por_100g": 176,
+    "macros_por_100g": {
+      "proteinas": 20.0,
+      "carbohidratos": 0.0,
+      "grasas": 10.0
+    }
+  },
+  {
+    "id": 11,
+    "nombre": "Aguacate",
+    "categoria": "Grasas Saludables",
+    "calorias_por_100g": 160,
+    "macros_por_100g": {
+      "proteinas": 2.0,
+      "carbohidratos": 8.5,
+      "grasas": 15.0
+    }
+  },
+  {
+    "id": 12,
+    "nombre": "Piña",
+    "categoria": "Frutas",
+    "calorias_por_100g": 50,
+    "macros_por_100g": {
+      "proteinas": 0.5,
+      "carbohidratos": 13.0,
+      "grasas": 0.1
+    }
+  },
+  {
+    "id": 13,
+    "nombre": "Manzana",
+    "categoria": "Frutas",
+    "calorias_por_100g": 52,
+    "macros_por_100g": {
+      "proteinas": 0.3,
+      "carbohidratos": 14.0,
+      "grasas": 0.2
+    }
+  },
+  {
+    "id": 14,
+    "nombre": "Papaya",
+    "categoria": "Frutas",
+    "calorias_por_100g": 43,
+    "macros_por_100g": {
+      "proteinas": 0.5,
+      "carbohidratos": 11.0,
+      "grasas": 0.3
+    }
+  },
+  {
+    "id": 15,
+    "nombre": "Sandía",
+    "categoria": "Frutas",
+    "calorias_por_100g": 30,
+    "macros_por_100g": {
+      "proteinas": 0.6,
+      "carbohidratos": 7.5,
+      "grasas": 0.2
+    }
+  },
+  {
+    "id": 16,
+    "nombre": "Leche semidescremada Dos Pinos",
+    "categoria": "Lácteos",
+    "calorias_por_100g": 47,
+    "macros_por_100g": {
+      "proteinas": 3.3,
+      "carbohidratos": 4.8,
+      "grasas": 1.5
+    }
+  },
+  {
+    "id": 17,
+    "nombre": "Maní (Cacahuates)",
+    "categoria": "Grasas Saludables",
+    "calorias_por_100g": 567,
+    "macros_por_100g": {
+      "proteinas": 25.8,
+      "carbohidratos": 16.1,
+      "grasas": 49.2
+    }
+  },
+  {
+    "id": 18,
+    "nombre": "Aceite de girasol",
+    "categoria": "Grasas y Aceites",
+    "calorias_por_100g": 884,
+    "macros_por_100g": {
+      "proteinas": 0.0,
+      "carbohidratos": 0.0,
+      "grasas": 100.0
+    }
+  },
+  {
+    "id": 19,
+    "nombre": "Azúcar blanca",
+    "categoria": "Azúcares",
+    "calorias_por_100g": 387,
+    "macros_por_100g": {
+      "proteinas": 0.0,
+      "carbohidratos": 100.0,
+      "grasas": 0.0
+    }
+  },
+  {
+    "id": 20,
+    "nombre": "Miel de abeja",
+    "categoria": "Azúcares",
+    "calorias_por_100g": 304,
+    "macros_por_100g": {
+      "proteinas": 0.3,
+      "carbohidratos": 82.0,
+      "grasas": 0.0
+    }
+  },
+  {
+    "id": 21,
+    "nombre": "Jalea de fresa",
+    "categoria": "Azúcares",
+    "calorias_por_100g": 250,
+    "macros_por_100g": {
+      "proteinas": 0.3,
+      "carbohidratos": 60.0,
+      "grasas": 0.1
+    }
+  },
+  {
+    "id": 22,
+    "nombre": "Papa cocida",
+    "categoria": "Tubérculos",
+    "calorias_por_100g": 87,
+    "macros_por_100g": {
+      "proteinas": 1.9,
+      "carbohidratos": 20.0,
+      "grasas": 0.1
+    }
+  },
+  {
+    "id": 23,
+    "nombre": "Camote cocido",
+    "categoria": "Tubérculos",
+    "calorias_por_100g": 86,
+    "macros_por_100g": {
+      "proteinas": 1.6,
+      "carbohidratos": 20.0,
+      "grasas": 0.1
+    }
+  },
+  {
+    "id": 24,
+    "nombre": "Yuca cocida",
+    "categoria": "Tubérculos",
+    "calorias_por_100g": 160,
+    "macros_por_100g": {
+      "proteinas": 1.4,
+      "carbohidratos": 38.0,
+      "grasas": 0.3
+    }
+  },
+  {
+    "id": 25,
+    "nombre": "Huevos enteros",
+    "categoria": "Proteínas",
+    "calorias_por_100g": 155,
+    "macros_por_100g": {
+      "proteinas": 13.0,
+      "carbohidratos": 1.1,
+      "grasas": 11.0
+    }
+  },
+  {
+    "id": 26,
+    "nombre": "Salmón",
+    "categoria": "Pescados",
+    "calorias_por_100g": 208,
+    "macros_por_100g": {
+      "proteinas": 20.0,
+      "carbohidratos": 0.0,
+      "grasas": 13.0
+    }
+  },
+  {
+    "id": 27,
+    "nombre": "Sardina en lata (en aceite, escurrida)",
+    "categoria": "Pescados",
+    "calorias_por_100g": 208,
+    "macros_por_100g": {
+      "proteinas": 24.0,
+      "carbohidratos": 0.0,
+      "grasas": 12.0
+    }
+  }
+]

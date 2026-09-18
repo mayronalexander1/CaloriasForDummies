@@ -8,8 +8,9 @@ export interface MacroNutrientes {
 export interface AlimentoData {
   id: number;
   nombre: string;
-  calorias_por_100g: MacroNutrientes;
-  macros_por_100g: MacroNutrientes
+  categoria: string;
+  calorias_por_100g: number;
+  macros_por_100g: MacroNutrientes;
 }
 
 export interface MealMenu {

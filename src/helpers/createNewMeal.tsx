@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { Meal } from '../types/index';
+import { Meal, AlimentoData } from '../types/index';
+import alimentosData from '../data/DataBase.json';
+
+const alimentos: /* ¿qué tipo va acá? */ = alimentosData;
 
 function ListMeals() {
     const [meals, setMeals] = useState<Array<Meal>>([])
@@ -20,20 +23,16 @@ function ListMeals() {
 
     return (
         <div>
-            <button onClick={addMeal}
-            disabled={meals.length >= 7}
-            >Add New Meal </button>
+            <button onClick={addMeal} disabled={meals.length >= 7}>
+                Add New Meal 
+            </button>
             <ul>
                 {meals.map((meal: Meal) => (
-
-                    <li key={meal.id}
-                    {meal.order} - {meal.name}>
-                    </li>
+                    <li key={meal.id}> {meal.order} - {meal.name} </li>
                 ))}
             </ul>
         </div>
     );
-}
 
 export default ListMeals
 

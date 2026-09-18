@@ -1,14 +1,11 @@
+import type { Meal } from '../types';
 
-function createNewMeal(existingMeals: Meal[]): Meal {
-    const id = Date.now();
-    const order = existingMeals.length + 1;
-    const name = `Comida ${order}`
-
-
-    return {
-        id,
-        name,
-        order,
-        foods: [],
-    }
+export function createNewMeal(existingMeals: Meal[]): Meal {
+  const order = existingMeals.length + 1;
+  return {
+    id: crypto.randomUUID(),
+    name: `Comida ${order}`,
+    order,
+    menu: [],
+  };
 }

@@ -2,6 +2,16 @@
 import { useState } from 'react';
 import type { Meal } from '../../types';
 
+export function createNewMeal(existingMeals: Meal[]): Meal {
+  const order = existingMeals.length + 1;
+  return {
+    id: crypto.randomUUID(),
+    name: `Comida ${order}`,
+    order,
+    menu: [],
+  };
+}
+
 function ListMeals() {
   const [meals, setMeals] = useState<Meal[]>([]);
 
@@ -18,7 +28,9 @@ function ListMeals() {
 
   return (
     <div>
-      <button onClick={addMeal}>Add New Meal</button>
+      <button onClick={addMeal} disabled={meals.length >= 7}>
+        Add New Meal
+      </button>
       <ul>
         {meals.map((meal: Meal) => (
           <li key={meal.id}>

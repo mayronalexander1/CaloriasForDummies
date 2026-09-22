@@ -1,4 +1,5 @@
 import ListMeals from './components/meals/ListMeals';
+import './App.css'
 
 function App() {
   return (

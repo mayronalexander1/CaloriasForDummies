@@ -18,7 +18,19 @@ function ListMeals() {
         }
         setMeals([...meals, newMeal]);
     };
+    
+    const handleFoodChange = (
+        e: React.ChangeEvent<HTMLSelectElement>
+    ): void => {
+        const value = parseInt(e.target.value, 10);
+        setSelectedFoodId(value)
+            
+    };
 
+    const removeMeal = ( id:string ): void => {
+        const mealsUpdated = meals.filter((meal) => meal.id !== id);
+        setMeals(mealsUpdated)
+    }
 
     return (
         <div>
@@ -32,10 +44,14 @@ function ListMeals() {
                     </option>
                 ))}
             </select>
-            
+
             <ul>
                 {meals.map((meal: Meal) => (
-                    <li key={meal.id}> {meal.order} - {meal.name} </li>
+                    <li key={meal.id}> {meal.order} - {meal.name} 
+                        <button onClick={() => removeMeal(meal.id)}>
+                        Eliminar
+                        </button>
+                    </li>
                 ))}
             </ul>
         </div>

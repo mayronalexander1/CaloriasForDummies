@@ -1,15 +1,24 @@
+/* ============================
+   1. VARIABLES / TOKENS
+============================ */
 :root {
-  --bg: #F7F8F5;
+  --bg: #FFF8F0;
   --surface: #FFFFFF;
-  --primary: #3E7C6B;
-  --primary-dark: #2E5E51;
-  --accent: #E1663D;
-  --text: #1D2621;
-  --text-muted: #6E7A72;
-  --border: #E4E7E2;
+  --primary: #f35500;
+  --primary-dark: #ff7700;
+  --accent: #f35500;
+  --text: #2B1B12;
+  --text-muted: #8A7A6D;
+  --border: #F0DFC8;
   --radius: 14px;
+  --macro-carbs: #4FD1A5;
+  --macro-fat: #9B6FD1;
+  --macro-protein: #F2A340;
 }
 
+/* ============================
+   2. BASE
+============================ */
 * {
   box-sizing: border-box;
 }
@@ -27,6 +36,9 @@ h1, h2, h3 {
   margin: 0;
 }
 
+/* ============================
+   3. LAYOUT GENERAL
+============================ */
 .app-shell {
   max-width: 480px;
   margin: 0 auto;
@@ -37,11 +49,6 @@ h1, h2, h3 {
   margin-bottom: 24px;
 }
 
-.app-header h1 {
-  font-size: 22px;
-  color: var(--primary-dark);
-}
-
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -50,7 +57,28 @@ h1, h2, h3 {
   margin-bottom: 16px;
 }
 
-/* Círculo de progreso de calorías */
+/* ============================
+   4. NOMBRE DE LA APP (editable)
+============================ */
+.app-title-input {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--primary-dark);
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+
+.app-title-input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--primary);
+}
+
+/* ============================
+   5. CÍRCULO DE PROGRESO DE CALORÍAS
+============================ */
 .calorie-ring {
   width: 160px;
   height: 160px;
@@ -87,30 +115,9 @@ h1, h2, h3 {
   color: var(--text-muted);
 }
 
-/* Formulario de agregar alimento */
-.food-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.food-form select,
-.food-form input {
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  background: var(--bg);
-  color: var(--text);
-}
-
-.food-form select:focus,
-.food-form input:focus {
-  outline: 2px solid var(--primary);
-  outline-offset: 1px;
-}
-
+/* ============================
+   6. BOTONES
+============================ */
 .btn {
   border: none;
   border-radius: 10px;
@@ -137,38 +144,161 @@ h1, h2, h3 {
   cursor: not-allowed;
 }
 
-/* Lista de comidas */
+.btn-accent {
+  background: var(--accent);
+  color: var(--text);
+}
+
+.btn-accent:hover {
+  opacity: 0.9;
+}
+
+.btn-remove-food {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.btn-remove-food:hover {
+  background: var(--border);
+}
+
+/* ============================
+   7. FORMULARIO AGREGAR ALIMENTO
+============================ */
+.food-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.food-form select,
+.food-form input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.food-form select:focus,
+.food-form input:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+/* ============================
+   8. TARJETA DE COMIDA (draggable)
+============================ */
 .meal-card {
   border-bottom: 1px solid var(--border);
   padding: 14px 0;
+  cursor: grab;
 }
 
 .meal-card:last-child {
   border-bottom: none;
 }
 
+.meal-card:active {
+  cursor: grabbing;
+}
+
 .meal-header {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 6px;
 }
 
-.meal-header h3 {
+.drag-handle {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.meal-name-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+
+.meal-name-input:focus {
+  outline: 2px solid var(--primary);
+  background: var(--bg);
+}
+
+.meal-total {
+  color: var(--primary-dark);
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ============================
+   9. LISTA DE ALIMENTOS DENTRO DE LA COMIDA
+============================ */
+.food-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  padding: 6px 0;
+  gap: 8px;
+}
+
+.food-item-info {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+/* Resumen de macros */
+.macro-summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.macro-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.macro-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-carb { background: var(--macro-carbs); }
+.dot-fat { background: var(--macro-fat); }
+.dot-protein { background: var(--macro-protein); }
+
+.macro-label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.macro-item strong {
+  font-family: 'Sora', sans-serif;
   font-size: 15px;
   color: var(--text);
 }
 
-.meal-total {
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.food-item {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  color: var(--text-muted);
-  padding: 4px 0;
-}

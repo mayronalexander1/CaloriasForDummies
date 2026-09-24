@@ -4,12 +4,14 @@ import { calcularAlimento, calcularTotalCalorias, calcularMacrosDiarios } from '
 import { useState, useEffect } from 'react'
 import { generateId } from '../../helpers/generatedId';
 
-
 const alimentos: AlimentoData[] = alimentosData;
-const META_CALORICA = 3000;
 
-function ListMeals() {
-  const [appName, setAppName] = useState<string>(() => {;
+interface ListMealsProps {
+  metaCalorica: number
+}
+
+function ListMeals({ metaCalorica }: ListMealsProps) {
+  const [appName, setAppName] = useState<string>(() => {
     const saved = localStorage.getItem('appName');
     return saved ?? 'CaloriasForDummies';
   });
@@ -122,7 +124,7 @@ function ListMeals() {
   };
 
   const totalDiario = meals.reduce((total, meal) => total + calcularTotalCalorias(meal.menu), 0);
-  const progreso = Math.min(100, Math.round((totalDiario / META_CALORICA) * 100));
+  const progreso = Math.min(100, Math.round((totalDiario / metaCalorica) * 100));
 
   const macrosDiarios = calcularMacrosDiarios(meals);
   const kcalCarb = macrosDiarios.carbohidratos * 4;
@@ -174,10 +176,10 @@ function ListMeals() {
       </div>
 
       <div className="card">
-        <div className="calorie-ring" style={{ background: ringBackground}}>
+        <div className="calorie-ring" style={{ background: ringBackground }}>
           <div className="calorie-ring-inner">
             <strong>{Math.round(totalDiario)}</strong>
-            <span>de {META_CALORICA} kcal</span>
+            <span>de {metaCalorica} kcal</span>
           </div>
         </div>
 

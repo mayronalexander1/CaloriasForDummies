@@ -1,13 +1,14 @@
 import type { Meal, AlimentoData } from '../../types';
 import alimentosData from '../../data/DataBase.json';
 import { calcularAlimento, calcularTotalCalorias, calcularMacrosDiarios } from '../../helpers/alimentos';
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { generateId } from '../../helpers/generatedId';
+import { getTodayString } from '../../helpers/fecha';
 
 const alimentos: AlimentoData[] = alimentosData;
 
 interface ListMealsProps {
-  metaCalorica: number
+  metaCalorica: number;
 }
 
 function ListMeals({ metaCalorica }: ListMealsProps) {
@@ -16,18 +17,43 @@ function ListMeals({ metaCalorica }: ListMealsProps) {
     return saved ?? 'CaloriasForDummies';
   });
 
-  const [meals, setMeals] = useState<Meal[]>(() => {
-    const saved = localStorage.getItem('meals');
-    if (saved) {
-      return JSON.parse(saved);
+  useEffect(() => {
+    localStorage.setItem('appName', appName);
+  }, [appName]);
+
+  // --- Manejo de fecha seleccionada ---
+  const [selectedDate, setSelectedDate] = useState<string>(getTodayString());
+
+  const defaultMeals = (): Meal[] => [
+    { id: generateId(), order: 1, name: 'Desayuno', menu: [] },
+    { id: generateId(), order: 2, name: 'Almuerzo', menu: [] },
+    { id: generateId(), order: 3, name: 'Cena', menu: [] },
+  ];
+
+  const [dailyLogs, setDailyLogs] = useState<Record<string, Meal[]>>(() => {
+    const saved = localStorage.getItem('dailyLogs');
+    const parsed: Record<string, Meal[]> = saved ? JSON.parse(saved) : {};
+
+    // Migración: si había datos guardados con la versión vieja (sin fechas),
+    // los movemos al día de hoy para no perderlos.
+    const oldMeals = localStorage.getItem('meals');
+    if (oldMeals && !parsed[getTodayString()]) {
+      parsed[getTodayString()] = JSON.parse(oldMeals);
     }
-    return [
-      { id: generateId(), order: 1, name: 'Desayuno', menu: [] },
-      { id: generateId(), order: 2, name: 'Almuerzo', menu: [] },
-      { id: generateId(), order: 3, name: 'Cena', menu: [] },
-    ];
+    return parsed;
   });
 
+  useEffect(() => {
+    localStorage.setItem('dailyLogs', JSON.stringify(dailyLogs));
+  }, [dailyLogs]);
+
+  const meals: Meal[] = dailyLogs[selectedDate] ?? defaultMeals();
+
+  const setMeals = (updatedMeals: Meal[]): void => {
+    setDailyLogs((prev) => ({ ...prev, [selectedDate]: updatedMeals }));
+  };
+
+  // --- Estado del formulario de agregar alimento ---
   const [selectedFoodId, setSelectedFoodId] = useState<number | null>(null);
   const [cantidadG, setCantidadG] = useState<string>('100');
   const [selectedMealId, setSelectedMealId] = useState<string | null>(null);
@@ -43,14 +69,6 @@ function ListMeals({ metaCalorica }: ListMealsProps) {
     };
     setMeals([...meals, newMeal]);
   };
-
-  useEffect(() => {
-    localStorage.setItem('meals', JSON.stringify(meals));
-  }, [meals])
-
-  useEffect(() => {
-    localStorage.setItem('appName', appName)
-  }, [appName]);
 
   const removeMeal = (id: string): void => {
     setMeals(meals.filter((meal) => meal.id !== id));
@@ -104,7 +122,7 @@ function ListMeals({ metaCalorica }: ListMealsProps) {
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>): void => {
-    e.preventDefault(); // necesario para permitir el "drop"
+    e.preventDefault();
   };
 
   const handleDrop = (dropIndex: number): void => {
@@ -123,6 +141,7 @@ function ListMeals({ metaCalorica }: ListMealsProps) {
     setDraggedIndex(null);
   };
 
+  // --- Cálculos de calorías y macros ---
   const totalDiario = meals.reduce((total, meal) => total + calcularTotalCalorias(meal.menu), 0);
   const progreso = Math.min(100, Math.round((totalDiario / metaCalorica) * 100));
 
@@ -156,6 +175,17 @@ function ListMeals({ metaCalorica }: ListMealsProps) {
           onChange={(e) => setAppName(e.target.value)}
         />
       </header>
+
+      <div className="date-nav">
+        <input
+          type="date"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+        />
+        <button className="btn-remove-food" onClick={() => setSelectedDate(getTodayString())}>
+          Hoy
+        </button>
+      </div>
 
       <div className="card macro-summary">
         <div className="macro-item">
